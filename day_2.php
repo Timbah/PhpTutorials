@@ -7,13 +7,15 @@ $totalValue = 0;
 
 function append_number_to_position($data){
    
-    $wordValue;
-    $wordPosition;
+    $wordValue =null;
+    $wordPosition = null;
     $arrayOfNumbers = null;
+
    //Search for a word(number) from the data input
+   //Conversions of word numbers to numeric value
+   
    if (is_numeric(strpos($data,"one"))) {
 
-    //echo "Number found at position :" .strpos($data,"two").'<br>';
     $wordValue = 1;
     $wordPosition = strpos($data,"one");
 
@@ -85,180 +87,18 @@ function append_number_to_position($data){
         $arrayOfNumbers[$wordPosition]= $wordValue;
     };
 
-    if (is_numeric(strpos($data,"ten"))){
-    
-        $wordValue = 10;
-        $wordPosition = strpos($data,"ten");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"eleven"))){
-    
-        $wordValue = 11;
-        $wordPosition = strpos($data,"eleven");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"twelve"))){
-    
-        $wordValue = 12;
-        $wordPosition = strpos($data,"twelve");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"thirteen"))){
-    
-        $wordValue = 13;
-        $wordPosition = strpos($data,"thirteen");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"fourteen"))){
-    
-        $wordValue = 14;
-        $wordPosition = strpos($data,"fourteen");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"fifteen"))){
-    
-        $wordValue = 15;
-        $wordPosition = strpos($data,"fifteen");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-    
-    if (is_numeric(strpos($data,"sixteen"))){
-    
-        $wordValue = 16;
-        $wordPosition = strpos($data,"sixteen");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-   if (is_numeric(strpos($data,"seventeen"))){
-    
-        $wordValue = 17;
-        $wordPosition = strpos($data,"seventeen");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"eighteen"))){
-    
-        $wordValue = 18;
-        $wordPosition = strpos($data,"eighteen");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"nineteen"))){
-    
-        $wordValue = 19;
-        $wordPosition = strpos($data,"nineteen");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"twenty"))){
-    
-        $wordValue = 20;
-        $wordPosition = strpos($data,"twenty");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"thirty"))){
-    
-        $wordValue = 30;
-        $wordPosition = strpos($data,"thirty");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-   if (is_numeric(strpos($data,"forty"))){
-    
-        $wordValue = 40;
-        $wordPosition = strpos($data,"forty");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"fifty"))){
-    
-        $wordValue = 50;
-        $wordPosition = strpos($data,"fifty");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"sixty"))){
-    
-        $wordValue = 60;
-        $wordPosition = strpos($data,"sixty");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"seventy"))){
-    
-        $wordValue = 70;
-        $wordPosition = strpos($data,"seventy");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"eighty"))){
-    
-        $wordValue = 80;
-        $wordPosition = strpos($data,"eighty");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"ninety"))){
-    
-        $wordValue = 90;
-        $wordPosition = strpos($data,"ninety");
-    
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    };
-
-    if (is_numeric(strpos($data,"onehundred"))){
-    
-        $wordValue = 100;
-        $wordPosition = strpos($data,"onehundred");
-
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-    
-    };
-
-    if (is_numeric(strpos($data,"zero"))){
-    
-        $wordValue = 0;
-        $wordPosition = strpos($data,"zero");
-        
-        $arrayOfNumbers[$wordPosition]= $wordValue;
-        
-    };
-
-
+     //Saving converted words into a global array
      $GLOBALS['arrayOfNumbers'] = $arrayOfNumbers;
-//     echo '<pre>';
-//  var_dump($arrayOfNumbers);
-//  echo '</pre>';
+
 }
 
+//Initializing global tracker of number of lines processed
 $lineCount=1;
+
+//Looping through each line of the text file on $lines
 
 foreach($lines as $line){
     
-    //echo $line .'<br>';
     $firstNumber = null;
     $lastNumber = null;
     $currentChar= null;
@@ -273,7 +113,7 @@ foreach($lines as $line){
     $lastNumPos = 0;
     
 
-
+    //Determine first,last numeric numbers and their positions on the current line
     for($x=0; $x <= strlen($line); $x++){
 
         $currentChar = substr($line,$x,1);
@@ -290,13 +130,17 @@ foreach($lines as $line){
         }
     }
 
-   
+    //Determine numeric values of word numbers on current line and save them on an array
     append_number_to_position($line);
 
+    //Get a copy of the global array set with values processed from word numbers
     $arrayOfNumbers = $GLOBALS['arrayOfNumbers'];
+
 //     echo '<pre>';
 //     var_dump($GLOBALS['arrayOfNumbers']);
 //    echo '</pre>';
+
+   //Determine first,last word numbers and their positions on the current line,saved on the array
    for($index =0; $index < 101 ; $index++){
 
     if (isset($arrayOfNumbers[$index])){
@@ -319,6 +163,8 @@ foreach($lines as $line){
    //195one 
    //bcdspxmhzsqfhhlghmqh5794blxm
 
+   //Determine the final first and last number to form a single digit i.e. 1 and 2 = 12
+
     $lastNumber = isset($lastNumber) ? $lastNumber : $firstNumber;
     $firstNumber = isset($firstNumber) ? $firstNumber : 0;
     $lastNumber = isset($lastNumber) ? $lastNumber : 0;
@@ -340,18 +186,18 @@ foreach($lines as $line){
         $lastNumber = isset($lastArrayNumber) ? $lastArrayNumber : $lastNumber;
     }
   
-    if($lastNumPos < $firstArrPos && $lastArrPos==0){
+    if($lastNumPos < $firstArrPos && $lastArrPos ==0 ){
         $lastNumber = $firstArrayNumber;
     }
-    echo"Line ". $lineCount."==========================" .'<br>';
 
+    echo"Line ". $lineCount."==========================" .'<br>';
     echo "First  array number ". $firstArrayNumber." last array number" . $lastArrayNumber . '<br>';
     echo "First number ". $firstNumber." last number" . $lastNumber . '<br>';
 
 
-    $amount = $firstNumber . $lastNumber;
-    echo "The total from this line is ". $amount . '<br>';
+    $amount = $firstNumber . $lastNumber;    
     $totalValue += $amount;
+    echo "The total from this line is ". $amount . " and the Running total is " . $totalValue . '<br>';
    // echo "Current total value : ".$totalValue . '<br>';
     $firstNumber = null;
     $lastNumber = null;
