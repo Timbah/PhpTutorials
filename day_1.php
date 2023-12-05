@@ -11,7 +11,6 @@ foreach($lines as $line){
     $currentChar;
     $amount;
 
-    //just testing if this appears on git
     for($x=0; $x < strlen($line); $x++){
 
         $currentChar = substr($line,$x,1);
