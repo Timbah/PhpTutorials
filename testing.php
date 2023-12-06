@@ -4,6 +4,6 @@ $myString = "thertdhdhdhd";
 
 // echo strlen($myString);
 
-for($x=0; $x < strlen($myString); $x++){
-    echo substr($myString,$x,1) ;
-}
+$newstring = '4stonekdgdhxrtqv9sixonevhhmhqzp';
+$pos = strrpos($newstring, 'one'); // $pos = 7, not 0
+echo $pos;
