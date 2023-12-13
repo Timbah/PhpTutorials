@@ -40,11 +40,11 @@ foreach($data as $line){
    
    
     $gameSet = str_getcsv(substr($line,strpos($line,":")+1),";"); 
-    echo 'Current game set: ';
+    // echo 'Current game set: ';
 
-     echo '<prev>';
-     var_dump($gameSet);
-     echo '</prev>' . '<br>';
+    //  echo '<prev>';
+    //  var_dump($gameSet);
+    //  echo '</prev>' . '<br>';
     
     foreach($gameSet as $currGameSet){
       
@@ -87,7 +87,7 @@ foreach($data as $line){
  
     }
      
-    echo 'Game: ' . $gameId . ' geme_id_no: '. get_game_id_number($gameId) . ' Line Red: ' . $lineRed . ' Line Blue: ' . $lineBlue . ' Line Green: ' . $lineGreen . '<br>';
+ //   echo 'Game: ' . $gameId . ' geme_id_no: '. get_game_id_number($gameId) . ' Line Red: ' . $lineRed . ' Line Blue: ' . $lineBlue . ' Line Green: ' . $lineGreen . '<br>';
 
     if($lineRed <= red_cubes && $lineBlue <= blue_cubes && $lineGreen <= green_cubes){
         echo 'Game is possible: '. $gameId . '<br>';
