@@ -92,7 +92,8 @@ foreach($data as $line){
     if($lineRed <= red_cubes && $lineBlue <= blue_cubes && $lineGreen <= green_cubes){
         echo 'Game is possible: '. $gameId . '<br>';
         //$sumOfId += $gameId;
-        $sumOfId  += get_game_id_number($gameId);
+        //$sumOfId  += get_game_id_number($gameId);
+        $sumOfId += $lineRed * $lineBlue * $lineGreen;
   
       }
 
